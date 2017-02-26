@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="189e7ff0-3264-47f3-97af-99082d465803" name="Project" url="http://ec2-52-212-39-45.eu-west-1.compute.amazonaws.com">
+        <fileTransfer host="ec2-52-212-39-45.eu-west-1.compute.amazonaws.com" port="22" privateKey="C:\Users\ryanj\Downloads\laravel2.pem" accessType="SFTP" username="ubuntu" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="578fcd5d-3d2f-41d4-8789-39c998042bcc" name="ryanProject" url="http://ec2-52-215-46-164.eu-west-1.compute.amazonaws.com/">
+        <fileTransfer host="ec2-52-215-46-164.eu-west-1.compute.amazonaws.com" port="22" privateKey="C:\Users\ryanj\Desktop\ryanProject.pem" accessType="SFTP" username="ubuntu" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
