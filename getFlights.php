@@ -1,3 +1,7 @@
+<head>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+</head>
+
 <?php
 session_start();
 include_once 'dbconnect.php';
@@ -42,16 +46,10 @@ $json = json_decode($results, true);
 $userAdd = array();
 $i = 0;
 
-echo "<div>" . "<h1>You're Flight Results</h1>" . "</div>";
+echo "<div>" . "<h1>Flight Results</h1>" . "</div>";
 foreach ($json['trips']['tripOption'] as $options) {
     $i++;
-    echo "<div class ='each-flight2'>" . "Total Price: " . $options['saleTotal'] . "  <div class='btn-group'>
-    <button type='button' class='btn btn-primary dropdown-toggle btn-xs' data-toggle='dropdown'>
-    Add <span class='caret'></span></button>
-    <ul class='dropdown-menu' role='menu'>
-      <li><a href='#'>Itinerary</a></li>
-    </ul>
-  </div></div>";
+    echo "<div class ='each-flight2'>" . "Total Price:" . $options['saleTotal'] . "</div>";
     $userAdd[$i]['saleTotal'] = $options['saleTotal'];
     foreach ($options['slice'] as $slices) {
         foreach ($slices['segment'] as $segments) {
@@ -62,13 +60,14 @@ foreach ($json['trips']['tripOption'] as $options) {
                 $userAdd[$i]['arrivalTime'] = $leg['arrivalTime'];
                 echo "<div>" . "Origin: " . $leg['origin'] . "</div>\n";
                 $userAdd[$i]['origin'] = $leg['origin'];
-                echo "<div>" . "Destination: " . $leg['destination'] . "</div>\n" . "<hr>";
+                echo "<div>" . "Destination: " . $leg['destination'] . "</div>\n";
                 $userAdd[$i]['destination'] = $leg['destination'];
             }
         }
     }
-    echo $userAdd[$i]['saleTotal'];
-    echo $userAdd[$i]['origin'];
+      echo "<div class = 'each-flight2'>" . "<form action = '/addFlight' name = 'addFlight' method ='post'>
+                <button type='submit' class='btn btn-info'>Add</button>
+                <input type='hidden' name='addFlight' value = " . htmlentities(serialize($userAdd[$i])) . "> . </form>". "</div>". "<br>"."<hr>";
 }
 
 ?>
